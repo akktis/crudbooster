@@ -11,7 +11,8 @@
 			"help":"string help-block",
 			"datatable_where":"string where condition",
 			"datatable_format":"sql concat alike. e.g : id,' - ',title",			
-			"datatable_exception":"string value exception"
+			"datatable_exception":"string value exception",
+			"minimumInputLength":"Number of characters necessary to start a search."
 		}
 									
 	}

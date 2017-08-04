@@ -232,12 +232,14 @@ class CBController extends Controller {
 				$join_alias  = str_replace(".", "_", $join_table);
 
 				if(in_array($join_table, $join_table_temp)) {
-					$join_alias_count += 1;
-					$join_alias = $join_table.$join_alias_count;
+					//$join_alias_count += 1;//this provide error db name
+					$join_alias = $join_table;
+					//.$join_alias_count;
+				} else {
+					$result->leftjoin($join_table.' as '.$join_alias,$join_alias.'.id','=',$table.'.'.$field);//we don't need to add this many time
+					$join_table_temp[] = $join_table;
 				}
-				$join_table_temp[] = $join_table;
-
-				$result->leftjoin($join_table.' as '.$join_alias,$join_alias.'.id','=',$table.'.'.$field);
+				
 				$result->addselect($join_alias.'.'.$join_column.' as '.$join_alias.'_'.$join_column);
 
 				$join_table_columns = CRUDBooster::getTableColumns($join_table);

@@ -15,6 +15,9 @@
 								
 								@$table3   = $raw[4];
 								@$column3  = $raw[5];
+								
+								$minimumInputLength = @$form['minimumInputLength'] == '' ? 1 : intval($form['minimumInputLength']);
+
 							?>
 							<script>				
 								$(function() {
@@ -48,7 +51,7 @@
 									    }								    								    
 									  },
 									  escapeMarkup: function (markup) { return markup; }, 							        							    
-									  minimumInputLength: 1,
+									  minimumInputLength:<?php echo $minimumInputLength ?>,
 								      @if($value)
 									  initSelection: function(element, callback) {
 								            var id = $(element).val()?$(element).val():"{{$value}}";
