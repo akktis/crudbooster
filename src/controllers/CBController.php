@@ -1154,7 +1154,8 @@ class CBController extends Controller {
 				break;
 			}
 
-			$table_columns = DB::getSchemaBuilder()->getColumnListing($this->table);
+			$table_columns = CRUDBooster::getTableColumns($this->table);
+			//$table_columns = DB::getSchemaBuilder()->getColumnListing($this->table);
 
 			$data['table_columns'] = $table_columns;
 			$data['data_import_column'] = $data_import_column;
@@ -1189,7 +1190,8 @@ class CBController extends Controller {
 
 		$select_column = Session::get('select_column');
 		$select_column = array_filter($select_column);
-		$table_columns = DB::getSchemaBuilder()->getColumnListing($this->table);
+		$table_columns = CRUDBooster::getTableColumns($this->table);
+		//$table_columns = DB::getSchemaBuilder()->getColumnListing($this->table);
 
 
 		$file = base64_decode(Request::get('file'));
